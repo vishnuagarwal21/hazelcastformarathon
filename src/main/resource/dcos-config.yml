@@ -1,0 +1,28 @@
+logging:
+  level: INFO
+  appenders: 
+    - type: console
+      timeZone: IST
+      includeCallerData: true
+      logFormat: "demo %d [%thread] %-5level %c{15}:%line - %msg%n%rEx"
+
+# Configuration for jetty server
+server:
+  type: simple
+  applicationContextPath: /
+  adminContextPath: /admin
+  minThreads: 100
+  maxThreads: 100
+  connector:
+    port: 8080
+    type: http
+
+kafkaConsumerFactory:
+  initialOffset: ${INITIAL_OFFSET}
+  group: ${GROUP_NAME}
+  shutdownOnFatal: true
+  autoCommit: ${AUTO_COMMIT}
+  zookeeper:
+    hosts: [${ZK_HOSTS}]
+  partitions:
+    ${TOPIC_NAME}: ${PARTITION_COUNT}

@@ -17,7 +17,9 @@ server:
     port: 8081
     type: http
 
-
+swagger:
+  resourcePackage: "com.test.hazelcast.demo.resource"
+  
 hazelcastConfig: 
     name: "test-hazelcast-instance"
     password: "test-hazelcast-password"

@@ -6,6 +6,8 @@ logging:
       includeCallerData: true
       logFormat: "HazelcastForMarathon %d [%thread] %-5level %c{15}:%line - %msg%n%rEx"
 
+swagger:
+  resourcePackage: "com.test.hazelcast.demo.resource"
 # Configuration for jetty server
 server:
   type: simple

@@ -11,6 +11,7 @@ import com.hazelcast.config.MapConfig;
 import com.hazelcast.config.MapStoreConfig;
 import com.hazelcast.config.NearCacheConfig;
 import com.hazelcast.config.NetworkConfig;
+import com.hazelcast.core.Hazelcast;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
 import com.hazelcast.core.MapStore;
@@ -109,6 +110,8 @@ public enum HazelcastManager {
          */
         log.debug("map store config {}", hazelcastConfig.getMapStoreConfigs().toString());
         config.addMapConfig(createTestMapStore());
+        hazelcastInstance = Hazelcast.newHazelcastInstance(config);
+        initializeMaps();
         log.info("Starting hazelcast server");
     }
 

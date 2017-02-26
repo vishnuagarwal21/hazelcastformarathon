@@ -4,7 +4,7 @@ logging:
     - type: console
       timeZone: IST
       includeCallerData: true
-      logFormat: "kafkaintegration %d [%thread] %-5level %c{15}:%line - %msg%n%rEx"
+      logFormat: "hazelcast %d [%thread] %-5level %c{15}:%line - %msg%n%rEx"
 
 # Configuration for jetty server
 server:
@@ -18,13 +18,9 @@ server:
     type: http
 
 
-kafkaConsumerFactory:
-  initialOffset: SMALLEST
-  group: demo
-  shutdownOnFatal: true
-  autoCommit: true
-  maxRecoveryAttempts: 0
-  zookeeper:
-    hosts: [localhost]
-  partitions:
-    test: 1
+hazelcastConfig: 
+    name: "test-hazelcast-instance"
+    password: "test-hazelcast-password"
+    networkConfigPort: 8000
+    mapStoreConfigs:
+      testinfo:  {size: 500000, timeToLiveSeconds: 3600,nearCacheMaxSize: 50000,nearCacheMaxIdleSeconds: 300,nearCacheTimeToLiveSeconds: 3600,nearCacheEvictionPolicy: LFU,backupCount: 1}

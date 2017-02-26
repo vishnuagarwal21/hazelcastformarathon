@@ -31,13 +31,13 @@ public class HazelcastConfig {
     private String clusterMembers = "127.0.0.1";
     private String clusterInterface = "127.0.0.*";
     private String zkConnectString = "127.0.0.1:2181";
-    private String zookeeperPath = "/avatar";
-    private String groupKey = "avatar";
+    private String zookeeperPath = "/test";
+    private String groupKey = "test";
     private Boolean enableJMX = false;
     private HashMap<String, MapStoreCacheConfig> mapStoreConfigs;
     private int partitionThreadCount = 6;
     private int ioThreadCount = 10;
-    private String instanceName = "omdriverwallet";
+    private String instanceName = "test";
     private boolean nearCache=false;
     
 }

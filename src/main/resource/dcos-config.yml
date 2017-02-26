@@ -4,7 +4,7 @@ logging:
     - type: console
       timeZone: IST
       includeCallerData: true
-      logFormat: "demo %d [%thread] %-5level %c{15}:%line - %msg%n%rEx"
+      logFormat: "HazelcastForMarathon %d [%thread] %-5level %c{15}:%line - %msg%n%rEx"
 
 # Configuration for jetty server
 server:
@@ -17,12 +17,22 @@ server:
     port: 8080
     type: http
 
-kafkaConsumerFactory:
-  initialOffset: ${INITIAL_OFFSET}
-  group: ${GROUP_NAME}
-  shutdownOnFatal: true
-  autoCommit: ${AUTO_COMMIT}
-  zookeeper:
-    hosts: [${ZK_HOSTS}]
-  partitions:
-    ${TOPIC_NAME}: ${PARTITION_COUNT}
+hazelcastConfig:
+  name: ${HAZELCAST_NAME}
+  password: ${HAZELCAST_PASSWORD}
+  networkConfigPort: ${HAZELCAST_PORT}
+  networkConfigPortAutoIncrement: ${HAZELCAST_NETWORK_PORT_AUTOINCREMENT}
+  multicastConfigEnabled: ${MULTICAST_ENABLED}
+  evictionPolicy: ${HAZELCAST_MAP_EVICTION_POLICY}
+  backupCount: ${HAZELCAST_BACKUPCOUNT}
+  clusterMembers: ${HAZELCAST_CLUSTER_MEMBERS}
+  clusterInterface: ${HAZELCAST_CLUSTER_INTERFACE}
+  enableJMX : ${ENABLE_JMS}
+  zkConnectString:  ${HAZELCAST_ZK_CONNECT_STRING}
+  zookeeperPath: ${HAZELCAST_ZOOKEEPER_PATH}
+  groupKey: ${HAZELCAST_GROUP_KEY}
+  partitionThreadCount: ${HAZELCAST_PARTITION_THREAD_COUNT}
+  ioThreadCount: ${HAZELCAST_IO_THREAD_COUNT}
+  nearCache: ${NEAR_CACHE_ENABLE}
+  mapStoreConfigs: 
+    testinfo:  {size: ${BASIC_PROFILE_SIZE}, timeToLiveSeconds: ${HAZELCAST_TTL},nearCacheMaxSize: ${HAZELCAST_NEAR_CACHE_MAX},nearCacheMaxIdleSeconds: 300,nearCacheTimeToLiveSeconds: 3600,nearCacheEvictionPolicy: ${HAZELCAST_NEAR_CACHE_EVICTION},backupCount: ${HAZELCAST_MAP_BACKUP_COUNT}}
